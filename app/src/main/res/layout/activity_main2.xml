@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity2">
+
+
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:openDrawer="start"
+        android:id="@+id/drawerLayout">
+
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:orientation="horizontal"
+                    android:background="@color/bacround">
+
+                    <com.google.android.material.appbar.MaterialToolbar
+                        android:layout_width="wrap_content"
+                        android:layout_height="?attr/actionBarSize"
+                        android:id="@+id/toolbar"
+                        app:titleTextColor="#000000"
+                        app:navigationIcon="@drawable/menubar" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_20sdp"
+
+                        android:padding="@dimen/_5sdp"
+                        android:text="Al-Quran (Tasbeeh)"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/_20sdp"
+                        android:textStyle="bold" />
+
+
+
+
+                </LinearLayout>
+
+
+
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+            <FrameLayout
+                android:id="@+id/fremlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="?attr/actionBarSize" />
+
+
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/layout"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:id="@+id/navigationview"
+            app:menu="@menu/menu" />
+
+
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+
+</RelativeLayout>

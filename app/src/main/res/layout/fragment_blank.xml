@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".BlankFragment"
+    >
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_200sdp"
+        android:background="@drawable/bacroundcolor"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:id="@+id/animation_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150sdp"
+        app:lottie_rawRes="@raw/animation"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"/>
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_300sdp"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_210sdp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="4"
+                >
+
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+
+
+                    android:background="@drawable/bacroundcard"
+                    android:id="@+id/qurannext">
+
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/quran_image" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:backgroundTint="#1600BCD4"
+                        android:gravity="center"
+                        android:textSize="@dimen/_8sdp"
+                        android:text="আল কুরআন"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:background="@drawable/bacroundcard" >
+
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/quran_image" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:backgroundTint="#1600BCD4"
+                        android:gravity="center"
+                        android:textSize="@dimen/_8sdp"
+                        android:text="আল কুরআন"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:background="@drawable/bacroundcard" >
+
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/quran_image" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:backgroundTint="#1600BCD4"
+                        android:gravity="center"
+                        android:textSize="@dimen/_8sdp"
+                        android:text="আল কুরআন"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:background="@drawable/bacroundcard" >
+
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/quran_image" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:backgroundTint="#1600BCD4"
+                        android:gravity="center"
+                        android:textSize="@dimen/_8sdp"
+                        android:text="আল কুরআন"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+</RelativeLayout>
