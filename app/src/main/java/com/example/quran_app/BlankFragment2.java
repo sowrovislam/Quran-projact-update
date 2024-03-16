@@ -34,12 +34,16 @@ import java.util.HashMap;
 
 public class BlankFragment2 extends Fragment {
 
+    RecyclerView recyclerView;
+    ProgressBar progressBar;
 
-  RecyclerView recyclerView;
-  ProgressBar progressBar;
+    ArrayList<HashMap<String,String>>arrayList=new ArrayList<>();
+    HashMap<String,String>hashMap;
 
-  ArrayList<HashMap<String,String>>arrayList;
-  HashMap<String,String>hashMap;
+
+    ArrayList<HashMap<String,String>>arrayList1=new ArrayList<>();
+
+    HashMap<String,String>hashMap1;
 
 
 
@@ -48,19 +52,113 @@ public class BlankFragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
+
+
+
+
         View myview=inflater.inflate(R.layout.fragment_blank2, container, false);
+
+
+
 
 
         recyclerView=myview.findViewById(R.id.recyclerView);
 
         progressBar=myview.findViewById(R.id.prog);
 
-            arrayList=new ArrayList<>();
 
 
 
-        Fragment();
+        String url ="https://cdn.jsdelivr.net/npm/quran-json@3.1.2/dist/quran_bn.json";
 
+        progressBar.setVisibility(View.VISIBLE);
+
+
+        JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+
+                progressBar.setVisibility(View.GONE);
+
+
+                try {
+
+                    for (int i = 0; i < response.length(); i++) {
+
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        String id = jsonObject.getString("id");
+                        String transliteration = jsonObject.getString("transliteration");
+
+                        hashMap = new HashMap<>();
+                        hashMap.put("id", id);
+                        hashMap.put("transliteration", transliteration);
+                        arrayList.add(hashMap);
+
+
+
+
+
+                        JSONArray versesArray=jsonObject.getJSONArray("verses");
+
+                        for (int x = 0; x < versesArray.length(); x++) {
+
+
+                            JSONObject verseObject = versesArray.getJSONObject(x);
+
+
+
+
+                            String name = verseObject.getString("translation");
+                            String verseId = verseObject.getString("id");
+                            String text = verseObject.getString("text");
+
+
+
+
+                            hashMap1 = new HashMap<>();
+                            hashMap1.put("name", name);
+                            hashMap1.put("id", verseId);
+                            hashMap1.put("text", text);
+                            arrayList1.add(hashMap1);
+
+
+
+
+
+
+                        }
+
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace(); // or handle the exception appropriately
+                }
+
+
+
+
+                Myadapter myadapter = new Myadapter();
+                recyclerView.setAdapter(myadapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+
+
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+
+            }
+        });
+
+
+        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
+        requestQueue.add(jsonArrayRequest);
+
+        
 
 
 
@@ -130,25 +228,45 @@ public class BlankFragment2 extends Fragment {
            hashMap=arrayList.get(position);
 
             String id= hashMap.get("id");
-           String name= hashMap.get("name");
+
            String transliteration= hashMap.get("transliteration");
            String type= hashMap.get("type");
 
-            String text= hashMap.get("text");
-            String translation1= hashMap.get("translation1");
-            String id1= hashMap.get("id1");
+
+//
+//
+//            String text= hashMap.get("text");
+//            String translation1= hashMap.get("translation1");
+//            String id1= hashMap.get("id1");
+//
+//
 
 
 
-
-
-
-
-
+//
+//
+//            holder.tvBangla.setText(""+type);
             holder.tvnumbar.setText(""+id);
-            holder.tvRb.setText(""+name);
+
+//            holder.tvRb.setText(""+name);
+
+
             holder.tvEnglish.setText(""+transliteration);
-            holder.tvBangla.setText(""+type);
+
+
+
+
+
+            hashMap1=arrayList1.get(position);
+
+            String text= hashMap1.get("text");
+            String name= hashMap1.get("name");
+            String id1= hashMap1.get("id");
+
+
+
+
+
 
 
 
@@ -164,7 +282,12 @@ public class BlankFragment2 extends Fragment {
                 public void onClick(View v) {
 
 
-                    BlankFragment3.ARABIC=text;
+                    BlankFragment3.ARABIC=name;
+
+                    BlankFragment3.BANGLA=text;
+                    BlankFragment3.NEXTDIS=id1;
+
+
 
 
 
@@ -201,171 +324,6 @@ public class BlankFragment2 extends Fragment {
 
 
 
-    public  void Fragment(){
-
-
-        String url ="https://cdn.jsdelivr.net/npm/quran-json@3.1.2/dist/quran_bn.json";
-
-
-
-        JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-
-                progressBar.setVisibility(View.GONE);
-
-                for (int x=0;x<response.length();x++){
-
-                    try {
-
-                        JSONObject jsonObjec=response.getJSONObject(x);
-
-                        JSONArray jsonArray=jsonObjec.getJSONArray("verses");
-
-                        for (int t=0;t<jsonArray.length();t++) {
-
-                            JSONObject jsonObject1 = jsonArray.getJSONObject(t);
-
-
-                            String text = jsonObject1.getString("text");
-                            String translation1 = jsonObject1.getString("translation");
-                            String id1 = jsonObject1.getString("id");
-
-
-
-                            hashMap=new HashMap<>();
-
-                            hashMap.put("text",text);
-                            hashMap.put("translation1",translation1);
-                            hashMap.put("id1",id1);
-
-                            arrayList.add(hashMap);
-
-
-
-
-
-
-
-
-                        }
-
-
-
-
-
-
-
-
-
-
-                    } catch (JSONException e) {
-
-                        throw new RuntimeException(e);
-                    }
-
-
-                }
-
-
-
-
-
-
-
-
-
-
-                for (int i=0;i<response.length();i++){
-
-                    try {
-                        JSONObject jsonObject=response.getJSONObject(i);
-
-
-                        String  id=jsonObject.getString("id");
-
-                        String   name=jsonObject.getString("name");
-
-                        String transliteration=jsonObject.getString("transliteration");
-
-                        String translation=jsonObject.getString("translation");
-
-                        String  type=jsonObject.getString("type");
-
-                        String total_verses=jsonObject.getString("total_verses");
-
-
-
-                        arrayList=new ArrayList<>();
-
-                        hashMap=new HashMap<>();
-                        hashMap.put("id",id);
-                        hashMap.put("name",name);
-                        hashMap.put("transliteration",transliteration);
-                        hashMap.put("translation",translation);
-                        hashMap.put("type",type);
-                        hashMap.put("total_verses",total_verses);
-
-                        arrayList.add(hashMap);
-
-
-
-
-
-
-
-
-                    } catch (JSONException e) {
-                        throw new RuntimeException(e);
-                    }
-
-
-                }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                Myadapter myadapter = new Myadapter();
-                recyclerView.setAdapter(myadapter);
-                recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                progressBar.setVisibility(View.GONE);
-
-
-            }
-        });
-
-
-        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
-        requestQueue.add(jsonArrayRequest);
-
-
-
-
-
-
 
 
 
@@ -373,4 +331,3 @@ public class BlankFragment2 extends Fragment {
     }
 
 
-}

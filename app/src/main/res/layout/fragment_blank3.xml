@@ -6,7 +6,10 @@
     tools:context=".BlankFragment3"
     android:background="@color/white"
     android:orientation="vertical"
+    android:clickable="true"
     >
+
+
 
 
     <TextView
